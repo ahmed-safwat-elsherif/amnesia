@@ -1,0 +1,169 @@
+<section id="orders">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-md-10">
+                <div class="btns">
+                    <button class="btn rounded-0" id="acceptbtn" type="submit" (click)="acceptedBtn()"><i class="fas fa-check"></i> Accepted</button>
+                    <button class="btn rounded-0" id="penddingbtn" type="submit" (click)="penddingBtn()"><i class="far fa-clock"></i> Pendding</button>
+                    <button class="btn rounded-0" id="rejectbtn" type="submit" (click)="rejectedBtn()"><i class="fas fa-times"></i> Rejected</button>
+                </div>
+                <div class="headers">
+                    <h2 id="status">Choose Status Of Orders...</h2>
+                </div>
+                <!-- accepted table -->
+                <table class="table table-striped" id="acceptedTable">
+                    <thead>
+                        <tr>
+                            <th scope="col">Order Number</th>
+                            <th scope="col">Full Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Total</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Details</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngIf="!isFetching">
+                        <tr>
+                            <td>1</td>
+                            <td>menna omar</td>
+                            <td>menna@gmail.com</td>
+                            <td>13/3/2020</td>
+                            <td>5000</td>
+                            <td  style="color:#3A9D5D">accepted</td>
+                            <td> <a href=""><i class="fas fa-info-circle"></i> More Details</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!-- accept pagination -->
+                <div class="pagination" id="acceptPagination">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                          <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Previous">
+                              <span aria-hidden="true">&laquo;</span>
+                              <span class="sr-only">Previous</span>
+                            </a>
+                          </li>
+                          <li class="page-item"><a class="page-link" href="#">1</a></li>
+                          <li class="page-item"><a class="page-link" href="#">2</a></li>
+                          <li class="page-item"><a class="page-link" href="#">3</a></li>
+                          <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Next">
+                              <span aria-hidden="true">&raquo;</span>
+                              <span class="sr-only">Next</span>
+                            </a>
+                          </li>
+                        </ul>
+                      </nav>
+                </div>
+
+                <!-- pendding table -->
+                <table class="table table-striped" id="penddingTable">
+                    <thead>
+                        <tr>
+                            <th scope="col">Order Number</th>
+                            <th scope="col">Full Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Total</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Details</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngIf="!isFetching">
+                        <tr>
+                            <td>1</td>
+                            <td>menna omar</td>
+                            <td>menna@gmail.com</td>
+                            <td>13/3/2020</td>
+                            <td>5000</td>
+                            <td style="color:#E0A800">pendding</td>
+                            <td> <a href=""><i class="fas fa-info-circle"></i> More Details</a></td>
+                            <td>
+                                <i class="fas fa-check ch"> Accept</i>
+                                <i class="fas fa-times"> Reject</i>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!-- pendding pagination -->
+                <div class="pagination" id="penddingPagination">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                          <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Previous">
+                              <span aria-hidden="true">&laquo;</span>
+                              <span class="sr-only">Previous</span>
+                            </a>
+                          </li>
+                          <li class="page-item"><a class="page-link" href="#">1</a></li>
+                          <li class="page-item"><a class="page-link" href="#">2</a></li>
+                          <li class="page-item"><a class="page-link" href="#">3</a></li>
+                          <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Next">
+                              <span aria-hidden="true">&raquo;</span>
+                              <span class="sr-only">Next</span>
+                            </a>
+                          </li>
+                        </ul>
+                      </nav>
+                </div>
+
+                <!-- rejected table -->
+                <table class="table table-striped" id="rejectedTable">
+                    <thead>
+                        <tr>
+                            <th scope="col">Order Number</th>
+                            <th scope="col">Full Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Total</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Details</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngIf="!isFetching">
+                        <tr>
+                            <td>1</td>
+                            <td>menna omar</td>
+                            <td>menna@gmail.com</td>
+                            <td>13/3/2020</td>
+                            <td>5000</td>
+                            <td style="color:#F63C3A">rejected</td>
+                            <td> <a href=""><i class="fas fa-info-circle"></i> More Details</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- reject pagination -->
+                <div class="pagination" id="rejectPagination">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                          <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Previous">
+                              <span aria-hidden="true">&laquo;</span>
+                              <span class="sr-only">Previous</span>
+                            </a>
+                          </li>
+                          <li class="page-item"><a class="page-link" href="#">1</a></li>
+                          <li class="page-item"><a class="page-link" href="#">2</a></li>
+                          <li class="page-item"><a class="page-link" href="#">3</a></li>
+                          <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Next">
+                              <span aria-hidden="true">&raquo;</span>
+                              <span class="sr-only">Next</span>
+                            </a>
+                          </li>
+                        </ul>
+                      </nav>
+                </div>
+
+                <div  *ngIf="isFetching">
+                    <mat-spinner class="loading"></mat-spinner>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,32 @@
+<section id="admin">
+    <div class="wrapper">
+        <nav id="sidebar">
+            <ul class="list-unstyled components">
+                <!-- <p><i class="fas fa-tachometer-alt"></i> Dashboard</p> -->
+                <p><i class="fas fa-users"></i> Users</p>
+                <li (click)="onClick(1)" [ngClass]="{'active': tab==='tab1'}">All Users</li>
+                <p><i class="fas fa-shopping-cart"></i> Orders</p>
+                <li (click)="onClick(2)" [ngClass]="{'active': tab==='tab2'}">Orders</li>
+                <p><i class="fas fa-store"></i> Products</p>
+                <li (click)="onClick(3)" [ngClass]="{'active': tab==='tab3'}">All Products</li>
+                <p><i class="fas fa-cog"></i> Seetings</p>
+                <li (click)="onClick(5)" [ngClass]="{'active': tab==='tab5'}">Edit Profile</li>
+                <li (click)="onClick(6)" [ngClass]="{'active': tab==='tab6'}">Logout</li>
+            </ul>
+        </nav>
+        <div id="content">
+            <button type="button" id="sidebarCollapse" class="navbar-btn" (click)="toggle()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div id="cont">
+                <app-admin-user id="AdminUser"></app-admin-user>
+                <app-admin-all-orders id="adminOrders"></app-admin-all-orders>
+                <app-admin-products id="adminProducts"></app-admin-products>
+                <!-- <app-admin-user-orders></app-admin-user-orders> -->
+
+            </div>
+        </div>
+    </div>
+</section>

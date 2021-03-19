@@ -1,0 +1,53 @@
+<section id="editProduct">
+    <div class="wrapper">
+      <form>
+        <div class="form-group row rounded-0">
+          <label for="img" class="col-sm-2 col-form-label">Image: </label>
+          <div class="col-sm-10">
+            <input type="file" class="form-control" id="img">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="name" class="col-sm-2 col-form-label">Name: </label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="name" placeholder="Product Name">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="description" class="col-sm-2 col-form-label">Description:</label>
+          <div class="col-sm-10">
+            <textarea name="" class="form-control" id="Description" cols="10" rows="3" placeholder="description"></textarea>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="oldPrice" class="col-sm-2 col-form-label">Old Price:</label>
+          <div class="col-sm-10">
+            <input type="number" class="form-control" id="oldPrice" placeholder="Old Price">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="newPrice" class="col-sm-2 col-form-label">New Price:</label>
+          <div class="col-sm-10">
+            <input type="number" class="form-control" id="newPrice" placeholder="New Price">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="status" class="col-sm-2 col-form-label">Status:</label>
+          <div class="col-sm-10">
+            <select name="" class="form-control" id="status">
+              <option value="normal">Normal</option>
+              <option value="normal">Sale</option>
+              <option value="normal">Out Of Stock</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-10">
+            <button type="submit" class="btn success rounded-0" id="save" (click)="save()" >Save</button>
+            <button type="reset" class="btn danger rounded-0" id="cancel" (click)="cancel()">Cancel</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    
+  </section>
