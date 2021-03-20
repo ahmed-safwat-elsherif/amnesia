@@ -35,22 +35,14 @@ export class ProductViewComponent implements OnInit {
      private router: Router,
      private route: ActivatedRoute,
      private myService: ProductsService) { 
-    this.id = this.route.snapshot.paramMap.get('_id') || "6031188490d8610015e3967b";
+    this.id = this.route.snapshot.paramMap.get('_id') || "";
 
-    console.log(this.id)
     this.getProductInfo()
     let token = localStorage.getItem('token') || 'empty token';
-    console.log(token)
     this.service.getProfile(token).subscribe(
       (user:any)=>{
         this.user = user.user;
-        console.log(this.user.favoriteProducts)
         let found = this.user.favoriteProducts.find((product)=>product._id == this.id);
-        console.log(found)
-        this.product.rating = (found)?found.rating:0;
-        console.log(this.product.rating)
-        this.star =  getRating(Number(this.product.rating));
-        console.log(this.star)
         if(found){
           this.addToFavBtn = "Added";
         }
@@ -61,7 +53,6 @@ export class ProductViewComponent implements OnInit {
     )
     let cart:any = JSON.parse(localStorage.getItem('cart'))|| [];
     let found = cart.find(product=> product.productId == this.id);
-    console.log(found)
     if(found){
       this.addToCartBtn = "Added";
     }
@@ -72,6 +63,8 @@ export class ProductViewComponent implements OnInit {
   getProductInfo(): void{
     this.service.getProductById(this.id).subscribe((product:any)=>{
       this.product=product.product;
+      
+      this.star =  getRating(Number(this.product.rating));
     })
   }
 
@@ -91,7 +84,6 @@ export class ProductViewComponent implements OnInit {
   addToCart(){
     let cart:any = JSON.parse(localStorage.getItem('cart'))|| [];
     let found = cart.find(product=> product.productId == this.id);
-    console.log(found)
     if(!found){
       cart.push({
         productId:this.id,
@@ -109,10 +101,13 @@ export class ProductViewComponent implements OnInit {
     let token = localStorage.getItem('token') || 'empty token';
     this.service.getProfile(token).subscribe(
       (user:any)=>{
-        console.log(user)
         this.service.postRatingById(token,rating,this.id).subscribe((product: any)=>{
           console.log(product,rating,this.id)
           this.product=product.product;
+          if(product.product.reviews.length==0){
+            this.product.rating/=2;
+          }
+          console.log(this.product.rating)
           this.star =  getRating(Number(this.product.rating));
         },
         err=>{

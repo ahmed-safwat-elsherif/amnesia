@@ -48,10 +48,18 @@ export class ProfileOrdersComponent implements OnInit {
           var total = 0;
           var quantity = 0;
           var price = 0;
+          let day = new Date(this.orders[i].deliverAt.from).getDate()
+          let month = new Date(this.orders[i].deliverAt.from).getMonth()
+          let year = new Date(this.orders[i].deliverAt.from).getFullYear()
+          let dayTo = new Date(this.orders[i].deliverAt.to).getDate()
+          let monthTo = new Date(this.orders[i].deliverAt.to).getMonth()
+          let yearTo = new Date(this.orders[i].deliverAt.to).getFullYear()
+          this.orders[i].deliverAt.from = `${day} / ${month} / ${year}`
+          this.orders[i].deliverAt.to = `${dayTo} / ${monthTo} / ${yearTo}`
           this.ordersId.push(Object.values(orders)[0][i]._id)
           for (let j = 0; j < this.orders[i].products.length; j++) {
             quantity = this.orders[i].products[j].quantity;
-            price = this.orders[i].products[j].productId.current_price;
+            price = this.orders[i].products[j].productId?.current_price || 0;
             total += quantity * price
           }
           this.totalPriceArr.push(total)

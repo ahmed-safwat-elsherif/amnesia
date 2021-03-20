@@ -36,7 +36,7 @@ export class ProductCardComponent implements OnInit {
   old_price: string;
   product_name: string;
   status: string;
-  classOfStatus: string;
+  classOfStatus: string="hide"
   options = "options-disappear";
   fav = "fav-disappear";
   appear() {
@@ -51,7 +51,6 @@ export class ProductCardComponent implements OnInit {
 
 
   changeHeartColor(id) {
-    console.log(this.objectOfInputs.isFavorite)
 
     if (!localStorage.getItem('token')) {
       this.router.navigate(['login']);
@@ -66,7 +65,6 @@ export class ProductCardComponent implements OnInit {
           this.ids.push(id)
           this.heartIcon = "#F65B5F";
           
-          console.log('success');
         },
         (error) => {
           console.log(error);
@@ -81,7 +79,6 @@ export class ProductCardComponent implements OnInit {
           if (index != -1) {//if id exist in array
             this.ids.splice(index, 1);
           }
-          console.log('subtract');
           this.myService.addToHeart.next(-1);
         },
         //handle error 
@@ -93,14 +90,12 @@ export class ProductCardComponent implements OnInit {
 
     if (!this.objectOfInputs.isFavorite) {
       this.heartIcon = "#F65B5F";
-      console.log("add to fav")
     }
   }
 
   /* add to cart */
   cartProducts = localStorage.getItem('cart');
   addToCart(event, id) {
-    console.log("ADDDDDD ")
     if (!this.cartId.includes(id)) {
       this.myService.addToCart.next();
       this.cartId.push(id)
@@ -108,7 +103,6 @@ export class ProductCardComponent implements OnInit {
 
     let cart: any = JSON.parse(localStorage.getItem('cart')) || [];
     let found = cart.find(product => product.productId == this.objectOfInputs._id);
-    console.log(found)
     if (!found) {
       cart.push({
         productId: this.objectOfInputs._id,
@@ -132,8 +126,6 @@ export class ProductCardComponent implements OnInit {
     
     ngOnInit(): void {
       /* add to cart */
-    console.log(this.favorites)
-    console.log(this.objectOfInputs);
     // this.heartIcon = (this.objectOfInputs.isFavorite) ? "#F65B5F" : "#CDCDCD";
     let cart: any = JSON.parse(localStorage.getItem('cart')) || [];
     let found = cart.find(product => product.productId == this.objectOfInputs._id);
@@ -147,10 +139,11 @@ export class ProductCardComponent implements OnInit {
     this.old_price = this.objectOfInputs.old_price;
     this.product_name = this.objectOfInputs.name;
     // this.image = this.objectOfInputs.image;
-    this.image = `https://amnesia-skincare.herokuapp.com/api/images/show/${this.objectOfInputs.image}`
+    this.image = (this.objectOfInputs.image.length < 10)?
+    "https://icons-for-free.com/iconfiles/png/512/full+products+round+icon-1320165923168064523.png":
+    `https://amnesia-skincare.herokuapp.com/api/images/show/${this.objectOfInputs.image}`;
     this.current_price = this.objectOfInputs.current_price;
     this._id = this.objectOfInputs._id;
-    console.log(this.objectOfInputs)
     this.heartIcon = (this.objectOfInputs.isFavorite) ? "#F65B5F" : "#CDCDCD";
 
   }
@@ -158,7 +151,6 @@ export class ProductCardComponent implements OnInit {
 
   ///////////////////////
   gotoProdInfo() {
-    console.log("jhj")
     this.router.navigate(['/productInfo/' + this._id])
   }
 }

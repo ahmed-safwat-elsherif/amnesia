@@ -24,13 +24,7 @@ export class AuthService {
   }
 
   loginUser(user) {
-    // const httpOptions = {
-    //   headers: new HttpHeaders({
-    //     'Content-Type': 'application/json',
-    //     // Authorization: this.getToken()
-    //   })
-    // }
-    console.log(user)
+    // console.log(user)
     return this.http.post<any>(this._loginUrl, user)
   }
 
@@ -40,9 +34,7 @@ export class AuthService {
   }
 
   getToken() {
-    console.log("dddddddddddddddddddddddddddddddd")
     let token = localStorage.getItem('token');
-    console.log(token)
     return token 
   }
 

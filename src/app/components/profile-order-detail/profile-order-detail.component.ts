@@ -35,11 +35,11 @@ export class ProfileOrderDetailComponent implements OnInit {
         this.order = order
         this.payment = this.order.order.paymentMethod
         for (let i = 0; i < this.order.order.products.length; i++) {
-          this.namesArr.push(this.order.order.products[i].productId.name)
+          this.namesArr.push(this.order.order.products[i].productId?.name || "N/A")
           this.quantityArr.push(this.order.order.products[i].quantity)
-          this.currPriceArr.push(this.order.order.products[i].productId.current_price)
-          this.oldPriceArr.push(this.order.order.products[i].productId.old_price)
-          this.totalCurrPriceArr += this.order.order.products[i].productId.current_price * this.order.order.products[i].quantity
+          this.currPriceArr.push(this.order.order.products[i].productId?.current_price || 0)
+          this.oldPriceArr.push(this.order.order.products[i].productId?.old_price || 0)
+          this.totalCurrPriceArr += (this.order.order.products[i].productId?.current_price || 0) * this.order.order.products[i].quantity
         }
       },
         (error) => {

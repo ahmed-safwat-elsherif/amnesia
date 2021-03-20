@@ -6,6 +6,9 @@ mat-slider {
     background-image: radial-gradient(#d8d7d72c 20%, transparent 20%);
     background-size: 30px 30px;
 }
+.page-item{
+    cursor: pointer;
+}
 .products-list:before{
     content: ' ';
     display: block;

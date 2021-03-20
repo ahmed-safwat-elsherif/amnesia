@@ -55,8 +55,8 @@ export class ProfileEditComponent implements OnInit, OnDestroy {
 
   /*validation on editing*/
   myForm = new FormGroup({
-    firstname: new FormControl('', [Validators.required, Validators.pattern("[a-zA-Z]*"), Validators.maxLength(8)]),
-    lastname: new FormControl('', [Validators.required, Validators.pattern("[a-zA-Z]*"), Validators.maxLength(8)]),
+    firstname: new FormControl('', [Validators.required, Validators.pattern("[a-zA-Z]*"), Validators.maxLength(8),Validators.minLength(3)]),
+    lastname: new FormControl('', [Validators.required, Validators.pattern("[a-zA-Z]*"), Validators.maxLength(8),Validators.minLength(3)]),
     email: new FormControl('', [Validators.required, Validators.pattern("^[a-zA-Z]{1}[a-zA-Z0-9.\-_]*@[a-zA-Z]{1}[a-zA-Z.-]*[a-zA-Z]{1}[.][a-zA-Z]{3,}$")]),
     phone: new FormControl('', [Validators.required, Validators.pattern("[0-9]*")]),
     password: new FormControl('', [Validators.required]),
@@ -132,7 +132,12 @@ export class ProfileEditComponent implements OnInit, OnDestroy {
           street: this.user.user.addresses?.split(', ')[2] || "",
           // img : this.user.user.profileImage || ""
         })
-        this.profImage = `https://amnesia-skincare.herokuapp.com/api/images/show/${this.user.user.profileImage}` || "http://nwsid.net/wp-content/uploads/2015/05/dummy-profile-pic.png"
+        
+        this.user.user.profileImage =((this.user.user.profileImage.length < 10))?
+        "http://static1.squarespace.com/static/54b7b93ce4b0a3e130d5d232/54e20ebce4b014cdbc3fd71b/5a992947e2c48320418ae5e0/1519987239570/icon.png?format=1500w":
+        `https://amnesia-skincare.herokuapp.com/api/images/show/${this.user.user.profileImage}`
+        
+        this.profImage = this.user.user.profileImage;
       },
         (error) => {
           console.log(error);

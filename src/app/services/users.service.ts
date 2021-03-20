@@ -12,8 +12,6 @@ import { shareReplay, catchError } from 'rxjs/operators';
 })
 export class UsersService {
   constructor(private myClient: HttpClient) {
-    console.log(myClient);
-    console.log("ctor")
   }
 
   tokenpw
@@ -26,7 +24,6 @@ export class UsersService {
 
   //get profile
   getProfile() {
-    console.log(this.token)
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -38,8 +35,6 @@ export class UsersService {
 
   //post edit profile
   editUser(userinfoEditedJson) {
-    console.log(userinfoEditedJson)
-    console.log(typeof userinfoEditedJson)
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -51,9 +46,6 @@ export class UsersService {
 
   //patch resetpw
   crnPassword(userpwJson, tokencrpw) {
-    console.log(userpwJson)
-    console.log(tokencrpw)
-    // console.log(this.token)
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -76,7 +68,6 @@ export class UsersService {
 
   //forget password
   forgetPassword(email){
-    console.log(email)
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',

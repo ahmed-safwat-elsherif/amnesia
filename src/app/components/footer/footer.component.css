@@ -16,7 +16,9 @@
     background-color: #9595956e;
 }
 
-
+.clickable{
+    cursor: pointer;
+}
 #footer .info h5{
     color: #FFFFFF;
     text-shadow: 2px 2px 5px #959595;

@@ -1,4 +1,4 @@
-<div class="card py-2 rounded-0 border-0" (mouseenter)="appear()" (mouseleave) ="disappear()" style="width: 15rem;" >
+<div class="card py-2 rounded-0 border-0" (mouseenter)="appear()" (mouseleave) ="disappear()"  >
     <div [class]="classOfStatus">{{status}}</div>
     <div [class]="fav">
       <fa-icon [icon]="faHeart" (click)="changeHeartColor(_id)" class="vertical" size="2x" [styles]="{'color': heartIcon}" pull="right"></fa-icon>
@@ -8,7 +8,7 @@
     </div>
     <!-- <img [src]="image" class="card-img-top border-1" alt="..."> -->
     <!-- <img src="https://media.allure.com/photos/5c1933c41f198f2c6627f8c8/1:1/w_400%2Cc_limit/tatcha-violet-c-serum.jpg" class="card-img-top border-1" alt="..."> -->
-    <img [src]="image">
+    <img [src]="image" class="img-fluid" >
     <div class="card-body">
       <h5 class="card-title text-center">{{product_name}}</h5>
       <div class="text-left my-2">

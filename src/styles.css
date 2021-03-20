@@ -3,8 +3,13 @@
 /*owl carouasal*/
 /* @import '~ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
 @import '~ngx-owl-carousel-o/lib/styles/scss/owl.theme.default'; */
-
-html, body { height: 100%; }
+/* @import '~ngx-owl-carousel-o/lib/styles/scss/owl.carousel.scss'; */
+/* @import '../ngx-owl-carousel-o/lib/styles/scss/owl.carousel.scss'; */
+/* @import '~ngx-owl-carousel-o/lib/styles/scss/owl.theme.default.scss'; */
+html, body { 
+  height: 100%; 
+  scroll-behavior: smooth;
+}
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 /* width */

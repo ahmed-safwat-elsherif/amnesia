@@ -1,5 +1,8 @@
 
 /* hero */
+.webapp-title{
+  font-family: 'Berkshire Swash', cursive;
+}
 #hero{
   background-image: url('../../../assets/images/bg-slide1.jpg');
   background-size: 100% 100%;

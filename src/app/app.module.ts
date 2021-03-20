@@ -36,13 +36,6 @@ import { FailedComponent } from './components/failed/failed.component';
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { ProductsListComponent } from './components/products-list/products-list.component';
 import { OrderCompletedComponent } from './components/order-completed/order-completed.component';
-import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
-import { AdminUserComponent } from './components/admin-user/admin-user.component';
-import { AdminUserOrdersComponent } from './components/admin-user-orders/admin-user-orders.component';
-import { AdminAllOrdersComponent } from './components/admin-all-orders/admin-all-orders.component';
-import { AdminOrderDetailsComponent } from './components/admin-order-details/admin-order-details.component';
-import { AdminProductsComponent } from './components/admin-products/admin-products.component';
-import { AdminProductAddComponent } from './components/admin-product-add/admin-product-add.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import{ContactUsService} from './services/contactus.service'
 // import{DefaultLayoutComponent} from './components/containers/default-layout/default-layout.component'
@@ -60,7 +53,6 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { AdminProductEditComponent } from './components/admin-product-edit/admin-product-edit.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -76,6 +68,7 @@ import { ErrorComponent } from './components/error/error.component';
 import { ForgetPwComponent } from './components/forget-pw/forget-pw.component';
 import { ConfirmEmailComponent } from './components/confirm-email/confirm-email.component';
 import { PwChangedSuccessfullyComponent } from './components/pw-changed-successfully/pw-changed-successfully.component';
+import { ScrollToTopComponent } from './components/scroll-to-top/scroll-to-top.component';
 
 
 
@@ -119,14 +112,6 @@ const materialUi = [
     FailedComponent,
     ProductCardComponent,
     ProductsListComponent,
-    AdminDashboardComponent,
-    AdminUserComponent,
-    AdminUserOrdersComponent,
-    AdminAllOrdersComponent,
-    AdminOrderDetailsComponent,
-    AdminProductsComponent,
-    AdminProductAddComponent,
-    AdminProductEditComponent,
     LoginComponent,
     RegisterComponent,
     NavbarComponent,
@@ -139,7 +124,9 @@ const materialUi = [
     ErrorComponent,
     ForgetPwComponent,
     ConfirmEmailComponent,
-    PwChangedSuccessfullyComponent
+    PwChangedSuccessfullyComponent,
+    ScrollToTopComponent,
+     
     
   ],
   imports: [

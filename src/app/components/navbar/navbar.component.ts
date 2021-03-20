@@ -27,7 +27,7 @@ export class NavbarComponent implements OnInit {
   /*var*/
   isOpen: boolean = false;
   heartCount: number = 0;
-  cartCount:number=0;
+  cartCount:number=JSON.parse(localStorage.getItem('cart')).length;
   count = JSON.parse(localStorage.getItem('cart')).length;
   @Input() Data: any;
   subscriber:any
@@ -38,50 +38,19 @@ export class NavbarComponent implements OnInit {
   }
   profImage:string
 
-  // searchigValue: string = "";
-  // allData: any[] = [];
-  // obj: any[] = [];
-  // products: any=[]
-
   /*toggle nav*/
   togglNavbar() {
     this.isOpen = !this.isOpen;
   }
   /*search*/
-  // searchForName() {
-  //   this.obj = this.products?.filter((product) => {
-  //     return product.name.includes(this.searchigValue);
-  //   })
-  //   console.log(this.obj)
-  // }
-  /*get all product*/
-  // getAllProducts() {
-  //   if(this.products?.length == 0){
-  //     this.productService.getProducts().subscribe(
-  //       (products:any) => {
-  //         this.products = products.products;
-  //         this.searchForName();
-  //       },
-  //       err => console.log(err)
-  //       )
-  //     } else{
-  //     this.searchForName();
 
-  //   }
-  // }
   search() {
     document.getElementById("search").classList.toggle("toggle");
   }
-  /**display*/
-  // display(event) {
-  //   document.getElementById("search").classList.toggle("toggle");
-  //   let search = document.getElementById("search-product");
-  //   search.classList.toggle('hide');
 
-  // }
   /*active*/
   active(e) {
-    console.log(e.target);
+    // console.log(e.target);
     let links = document.getElementsByClassName('nav-link');
     for (let i = 0; i < links.length; i++) {
       links[i].classList.remove('active');
@@ -94,9 +63,12 @@ export class NavbarComponent implements OnInit {
     this.subscriber = this._userService.getProfile().subscribe(
       user =>{
         this.user = Object.values(user)[0]
-        console.log(user)
-        console.log(this.user.profileImage)
-        this.profImage = `https://amnesia-skincare.herokuapp.com/api/images/show/${this.user.profileImage}` || "http://nwsid.net/wp-content/uploads/2015/05/dummy-profile-pic.png"
+        // console.log(user)
+        // console.log(this.user.profileImage)
+        this.user.profileImage = (this.user.profileImage?.length > 10)?
+        `https://amnesia-skincare.herokuapp.com/api/images/show/${this.user.profileImage}`:
+        "http://static1.squarespace.com/static/54b7b93ce4b0a3e130d5d232/54e20ebce4b014cdbc3fd71b/5a992947e2c48320418ae5e0/1519987239570/icon.png?format=1500w"
+        this.profImage = this.user.profileImage
         return this.user
         
       },
@@ -118,12 +90,16 @@ export class NavbarComponent implements OnInit {
         this.heartCount=response.user.favoriteProducts.length??0;  
       }
     )
-    /* addToCart */
-    // void
-    //   this.product.addToCart.subscribe(
-    //     () => {
-    //       this.cartCount = this.cartCount + 1;
-    //     }
-    //   )
+    void 
+    this.product.addToCart.subscribe(()=>{
+      this.cartCount=this.cartCount+1;
+    })
+    void 
+    this.product.deleteProduct.subscribe(()=>{
+      this.cartCount=this.cartCount-1;
+    })
+    this.product.resetCart.subscribe(()=>{
+      this.cartCount = 0;
+    })
   }
 }

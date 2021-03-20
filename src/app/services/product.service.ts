@@ -21,9 +21,9 @@ export class ProductService{
       return this.http.get(this._baseUrl)
     }
 
-    getAllProductsApi(skip,take){
+    getAllProductsApi(pname,skip,take){
       console.log('sssss')
-      return this.http.get(this.amnesiaURL + "products/?limit="+take +"&skip="+skip ); //copy from products
+      return this.http.get(`${this.amnesiaURL}products/${pname}?limit=${take}&skip=${skip}` ); //copy from products
     }
 
     

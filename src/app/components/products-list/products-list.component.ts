@@ -24,12 +24,13 @@ export class ProductsListComponent implements OnInit {
   limitGlobal
   noOfProducts = 0
   allFavorites=[];
+  currentPagination = 1;
+  pname="";
   /*ctor*/
   constructor(
     private productService: ProductService,
     private userService: UsersService
     ) {
-      // this.getData(0,5)
     }
 
 
@@ -42,27 +43,27 @@ export class ProductsListComponent implements OnInit {
   }
 
   slider(event) {
-    // console.log(event.value)
+    if(event.value==0){
+      this.getData(this.pname,0,15);
+      return
+    }
     this.obj = this.allData.filter((product) => {
       return Number(product.current_price) <= Number(event.value)
     })
   }
 
-  getData(skip, take) {
+  getData(pname,skip, take) {
     this.loading = true;
     this.appear = false;
     this.skipGlobal = skip;
-    this.productService.getAllProductsApi(skip, take).subscribe(
+    this.productService.getAllProductsApi(pname,skip, take).subscribe(
       (response: any) => {
         this.loading = false;
         this.appear = true;
         this.allData = response.products;
-        // console.log(this.obj)
         this.userService.getProfile().subscribe(
           (res:any)=>{
-            // console.log(res)
             this.allFavorites = res.user.favoriteProducts.map((item)=>item._id);
-            let arrayOfOBJ=[];
             this.allData.map((item,index)=>{
               if(this.allFavorites.includes(item._id)){
                 this.allData[index].isFavorite = true;
@@ -77,7 +78,7 @@ export class ProductsListComponent implements OnInit {
         )
         this.arrnoOfPages = [];
         this.noOfProducts = response.length
-        this.noOfPages = Math.ceil(response.length / 5);
+        this.noOfPages = Math.ceil(response.length / 15);
         for (let i = 1; i <= this.noOfPages; i++) {
           this.arrnoOfPages.push(i);
         }
@@ -90,17 +91,31 @@ export class ProductsListComponent implements OnInit {
   }
 
   searchForName() {
-    this.obj = this.allData.filter((product) => {
-      return product.product_name.includes(this.searchigValue);
-    })
+    console.log(this.pname)
+    setTimeout(()=>{
+      console.log("searching")
+      this.getData(this.pname,0, 15)
+    },500)
   }
 
   paginate(val) {
-    this.getData((((val * 5) - 5)), (val * 5));
-    this.skipGlobal = (val * 5) - 5
+    this.currentPagination = val;
+    this.getData(this.pname,(((val * 15) - 15)), (val * 15));
+    this.skipGlobal = (val * 15) - 15
   }
 
-
+  nextPag(){
+    if(this.currentPagination < this.arrnoOfPages.length){
+      this.currentPagination +=1 ;
+      this.paginate(this.currentPagination);
+    }
+  }
+  prevPag(){
+    if(this.currentPagination > 1){
+      this.currentPagination -=1 ;
+      this.paginate(this.currentPagination);
+    }
+  }
 
   changeSale() {
     if (this.isChecked == true) {

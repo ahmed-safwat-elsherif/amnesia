@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UsersService } from '../../services/users.service'
 import { OrdersService } from '../../services/orders.service'
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ProductsService } from 'src/app/services/products.service';
 
 @Component({
   selector: 'app-cart-buy',
@@ -15,6 +16,7 @@ export class CartBuyComponent implements OnInit, OnDestroy {
     private myService: UsersService,
     private myServiceOrder: OrdersService,
     private myActivatedRoute: ActivatedRoute,
+    private productsService: ProductsService,
     private router: Router
     ) { }
 
@@ -60,11 +62,13 @@ export class CartBuyComponent implements OnInit, OnDestroy {
           const orderinfoJson = JSON.stringify(orderinfo)
           this.subscriber = this.myServiceOrder.addOrder(orderinfoJson)
             .subscribe((orderinfoJson) => {
+              this.productsService.resetCart.next();
               console.log(orderinfoJson);
               localStorage.setItem('cart',JSON.stringify([]));
               // document.getElementsByTagName('form')[0].style.display = 'none';
               document.getElementById('formBuy').style.display='none'
               document.getElementById('orderSuccess').style.display = 'flex';
+
             },
               (error) => {
                 console.log(error);

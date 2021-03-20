@@ -15,7 +15,8 @@ export class CartComponent implements OnInit, OnDestroy {
   constructor(
     private myService: ProductsService,
     private myActivatedRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private productsService: ProductsService
     ) { }
 
   /*var*/
@@ -68,6 +69,7 @@ export class CartComponent implements OnInit, OnDestroy {
     this.mycartObj.splice(index, 1)
     document.getElementsByTagName("tr")[parseInt(index) + 1].style.display = "none";
     localStorage.setItem('cart', JSON.stringify(this.mycartObj))
+    this.myService.deleteProduct.next(-1)
   }
 
   /*onInt*/

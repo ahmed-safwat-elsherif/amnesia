@@ -6,16 +6,19 @@
                 <p>Find the best skincare products for all skin types with best quality.</p>
             </div>
             <div class="col-md-4">
-                <h5>Products</h5>
-                <span>Makeup</span>
-                <span>Skin</span>
-                <span>Hair</span>
+                <h5>Menu</h5>
+                <span class="clickable" (click)="navigateTo('')">Home</span>
+                <span class="clickable" (click)="navigateTo('about')">About</span>
+                <span class="clickable" (click)="navigateTo('productList')">Products</span>
+                <span class="clickable" (click)="navigateTo('contactUs')">Contact us</span>
+                <!-- <span (click)="">Language</span> -->
             </div>
             <div class="col-md-4">
                 <h5>Store information</h5>
                 <span><i class="fas fa-map-marker-alt"></i> Cairo, Egypt</span>
                 <span><i class="fas fa-phone"></i> +02123456</span>
-                <span><i class="fas fa-envelope"></i> Beauty@gmail.com</span>
+                <span><i class="fas fa-envelope"></i><a href = "mailto:amnesia.ecommerce@gmail.com"> amnesia.ecommerce@gmail.com</a>
+                </span>
             </div>
         </div>
         <hr>
@@ -32,7 +35,7 @@
         </div>
         <hr>
         <div class="row">
-            <div class="col-lg-12 text-center cpyRight">© 2021 - Ecommerce software by ITI</div>
+            <div class="col-lg-12 text-center cpyRight">© 2021 - Amnesia ecommerce by ITI</div>
         </div>
     </div>
 </section>

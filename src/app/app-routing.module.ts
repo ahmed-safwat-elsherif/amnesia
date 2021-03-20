@@ -13,18 +13,11 @@ import { FooterComponent } from './components/footer/footer.component';
 import { CartComponent } from './components/cart/cart.component';
 import { CartEmptyComponent } from './components/cart-empty/cart-empty.component';
 import { CartBuyComponent } from './components/cart-buy/cart-buy.component';
-// import { ConfirmedComponent } from './components/confirmed/confirmed.component'
 import { FailComponent } from './components/fail/fail.component'
 import { ResetpasswordComponent } from './components/resetpassword/resetpassword.component'
 import { ProductViewComponent } from './components/product-view/product-view.component';
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { ProductsListComponent } from './components/products-list/products-list.component';
-import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component'
-import { AdminUserOrdersComponent } from './components/admin-user-orders/admin-user-orders.component';
-import { AdminAllOrdersComponent } from './components/admin-all-orders/admin-all-orders.component';
-import { AdminOrderDetailsComponent } from './components/admin-order-details/admin-order-details.component';
-import { AdminProductsComponent } from './components/admin-products/admin-products.component';
-import { AdminProductAddComponent } from './components/admin-product-add/admin-product-add.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -61,11 +54,6 @@ const routes: Routes = [
   { path: 'footer', component: FooterComponent },
   { path: 'productInfo/:_id', component: ProductViewComponent },
   { path: 'productList', component: ProductsListComponent },
-  { path: 'admin', component: AdminDashboardComponent },
-  { path: 'adminUserOrders/:id', component: AdminUserOrdersComponent },
-  { path: 'adminAllOrders', component: AdminAllOrdersComponent },
-  { path: 'adminOrderDetails/:id', component: AdminOrderDetailsComponent },
-  { path: 'adminProductAdd', component: AdminProductAddComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   {path: 'favourite', component:FavouriteComponent},

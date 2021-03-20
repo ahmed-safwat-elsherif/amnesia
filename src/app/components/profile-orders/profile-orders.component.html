@@ -9,9 +9,10 @@
                     <thead>
                         <tr>
                             <th scope="col">Order Number</th>
-                            <th scope="col">Date</th>
                             <th scope="col">Status</th>
                             <th scope="col">Total</th>
+                            <th scope="col">Delivered From</th>
+                            <th scope="col">Delivered To</th>
                             <th scope="col">Details</th>
                             <th scope="col">Action</th>
                         </tr>
@@ -19,9 +20,10 @@
                     <tbody *ngIf="!isFetching && !isError">
                         <tr *ngFor="let order of orders; index as i" id="numRows">
                             <th>{{order._id}}</th>
-                            <td>{{order.createdAt}}</td>
                             <td>{{order.orderStatus}}</td>
-                            <td>{{totalPriceArr[i]}}</td>
+                            <td>$ {{totalPriceArr[i]}}</td>
+                            <td>{{order.deliverAt.from}}</td>
+                            <td>{{order.deliverAt.to}}</td>
                             <td>
                                 <!-- <button class="btn rounded-0" id="viewDetails" (click)="orderDetails(order._id)" >Details</button> -->
                                 <button class="btn rounded-0" id="viewDetails"

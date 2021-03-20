@@ -1,25 +1,7 @@
-<!-- <div class="container-fluid p-5 m-auto row collection-header">
-   <div class="col-6">
-      <h3 class="text-uppercase">Collection</h3>
-   </div>
-   <div class="col-6">
-      <nav aria-label="breadcrumb text-end">
-         <ol class="breadcrumb text-uppercase d-flex justify-content-end">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Library</li>
-         </ol>
-      </nav>
-   </div>
-</div> -->
 <div class="container-fluid products-list">
    <div class="container filter-panel">
       <div class="row">
-         <div class="col-12 text-center" *ngIf="loading">
-            <div class="spinner-border text-primary" role="status">
-               <span class="sr-only">Loading...</span>
-            </div>
-         </div>
-         <div class="col-md-12 col-sm-12" *ngIf="appear">
+         <div class="col-md-12 col-sm-12" >
             <ul class="list-group row rounded-0">
                <li class="list-group-item text-center" style="color:#F65B5F ">Showing Products
                   {{skipGlobal+1}}-{{skipGlobal+obj?.length}} Of {{noOfProducts}} Result</li>
@@ -45,7 +27,7 @@
                      <div class="col-12 ">
                         <input type="text" class="form-control"
                            style="height: calc( 2rem );color:black;font-size:large;font-weight:bold" name="searching"
-                           #name=ngModel [(ngModel)]="searchigValue" placeholder="search for name " aria-label="Search"
+                           #name=ngModel [(ngModel)]="pname" placeholder="search for name " aria-label="Search"
                            aria-describedby="basic-addon2" (keyup)="searchForName()" style="margin-top: 30px ">
                      </div>
                   </div>
@@ -57,9 +39,18 @@
                      style="margin-left: 50%;margin-top: 7%;border-radius: 50%" />
                </li>
             </ul>
-            <div class="container row m-auto cards">
+            <div class="container row m-auto cards" *ngIf="appear">
                <app-product-card [objectOfInputs]="obj[i]" [favorites]="allFavorites" class="col-md-4 col-sm-6 col-xm-12"
                   *ngFor="let ob of obj; index as i;"></app-product-card>
+            </div>
+            <div class="container row m-auto cards" *ngIf="obj.length==0">
+               <h2 class="text-center mt-2 ">no searches is matching '{{pname}}' found</h2>
+            </div>
+            
+         </div>
+         <div class="col-12 text-center p-5" *ngIf="loading">
+            <div class="spinner-border text-primary" role="status">
+               <span class="sr-only">Loading...</span>
             </div>
          </div>
       </div>
@@ -72,7 +63,7 @@
    <nav aria-label="Page navigation example">
       <ul class="pagination justify-content-center">
          <li class="page-item">
-            <a class="page-link" href="#" aria-label="Previous">
+            <a class="page-link" (click)="prevPag()" aria-label="Previous">
                <span aria-hidden="true">&laquo;</span>
                <span class="sr-only">Previous</span>
             </a>
@@ -82,7 +73,7 @@
          <!-- <li class="page-item"><a class="page-link" (click)="paginate(2)">2</a></li>
         <li class="page-item"><a class="page-link" (click)="paginate(3)">3</a></li> -->
          <li class="page-item">
-            <a class="page-link" href="#" aria-label="Next">
+            <a class="page-link" (click)="nextPag()"  aria-label="Next">
                <span aria-hidden="true">&raquo;</span>
                <span class="sr-only">Next</span>
             </a>
@@ -90,3 +81,4 @@
       </ul>
    </nav>
 </div>
+<app-footer></app-footer>

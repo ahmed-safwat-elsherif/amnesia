@@ -8,7 +8,12 @@
                         <i class="fas fa-2x fa-camera-retro"></i>
                     </label>
                     <input type="file" id="img" (change)="onUpload($event)">
-                    <div class="lds-ellipsis" *ngIf="isFetchingImg"><div></div><div></div><div></div><div></div></div>
+                    <div class="lds-ellipsis" *ngIf="isFetchingImg">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
                 </div>
                 <!-- first name -->
                 <div class="col-md-5 mb-3">
@@ -19,18 +24,14 @@
                                 <i class="fa fa-user"></i>
                             </span>
                         </div>
-                        <input type="text" class="form-control"
-                            *ngIf="myForm.controls.firstname.errors else correctFirstName" appValidationError
-                            id="firstname" placeholder="First name" name="firstname" formControlName="firstname"
-                            required>
-                        <ng-template #correctFirstName>
-                            <input type="text" class="form-control" appValidationCorrect id="firtname"
-                                placeholder="First name" name="firstname" formControlName="firstname" required>
-                        </ng-template>
-                        <div *ngIf="myForm.controls.firstname.errors && myForm.controls.firstname.touched" class="error text-danger">
+                        <input type="text" class="form-control" id="firstname" placeholder="First name" name="firstname"
+                            formControlName="firstname" required>
+                        <div *ngIf="myForm.controls.firstname.errors && myForm.controls.firstname.touched"
+                            class="error text-danger">
                             <p *ngIf="myForm.controls.firstname.errors.required">Name is Required</p>
-                            <p *ngIf="myForm.controls.firstname.errors.maxlength">Name must be less than 8 characters
-                            </p>
+                            <p *ngIf="myForm.controls.firstname.errors.maxlength">Name must be less than 8 characters</p>
+
+                            <p *ngIf="myForm.controls.firstname.errors.minlength">Name must be more than 3 characters</p>
                             <p *ngIf="myForm.controls.firstname.errors.pattern">Name must be characters only</p>
                         </div>
                     </div>
@@ -45,17 +46,15 @@
                                 <i class="fa fa-user"></i>
                             </span>
                         </div>
-                        <input type="text" class="form-control" *ngIf="myForm.controls.lastname.errors else correctln"
-                            appValidationError id="lastname" placeholder="Last name" name="lastname"
+                        <input type="text" class="form-control"
+                             id="lastname" placeholder="Last name" name="lastname"
                             formControlName="lastname" required>
-                        <ng-template #correctln>
 
-                            <input type="text" class="form-control" appValidationCorrect id="lastname"
-                                placeholder="Last name" name="lastName" formControlName="lastname" required>
-                        </ng-template>
-                        <div *ngIf="myForm.controls.lastname.errors" class="error text-danger">
+                        <div *ngIf="myForm.controls.lastname.errors &&  myForm.controls.lastname.touched" class="error text-danger">
                             <p *ngIf="myForm.controls.lastname.errors.required">Name is Required</p>
                             <p *ngIf="myForm.controls.lastname.errors.maxlength">Name must be less than 8 characters</p>
+                            <p *ngIf="myForm.controls.lastname.errors.minlength">Name must be more than 3 characters</p>
+
                             <p *ngIf="myForm.controls.lastname.errors.pattern">Name must be characters only</p>
                         </div>
                     </div>
@@ -69,14 +68,10 @@
                                 <i class="fas fa-at"></i>
                             </span>
                         </div>
-                        <input type="email" class="form-control" *ngIf="myForm.controls.email.errors else correctemail"
-                            appValidationError id="email" placeholder="email" name="email" formControlName="email"
+                        <input type="email" class="form-control" 
+                             id="email" placeholder="email" name="email" formControlName="email"
                             required>
-                        <ng-template #correctemail>
-                            <input type="email" class="form-control" appValidationCorrect id="email" placeholder="email"
-                                name="email" formControlName="email" required>
-                        </ng-template>
-                        <div *ngIf="myForm.controls.email.errors" class="error text-danger">
+                        <div *ngIf="myForm.controls.email.errors && myForm.controls.email.touched" class="error text-danger">
                             <p *ngIf="myForm.controls.email.errors.required">email is Required</p>
                             <p *ngIf="myForm.controls.email.errors.pattern">invalid email</p>
                         </div>
@@ -91,14 +86,10 @@
                                 <i class="fas fa-phone"></i>
                             </span>
                         </div>
-                        <input type="text" class="form-control" *ngIf="myForm.controls.phone.errors else correctphone"
-                            appValidationError id="phone" placeholder="phone" name="phone" formControlName="phone"
+                        <input type="text" class="form-control"
+                             id="phone" placeholder="phone" name="phone" formControlName="phone"
                             required>
-                        <ng-template #correctphone>
-                            <input type="text" class="form-control" appValidationCorrect id="phone" placeholder="phone"
-                                name="phone" formControlName="phone" required>
-                        </ng-template>
-                        <div *ngIf="myForm.controls.phone.errors" class="error text-danger">
+                        <div *ngIf="myForm.controls.phone.errors && myForm.controls.phone.touched" class="error text-danger">
                             <p *ngIf="myForm.controls.phone.errors.required">phone is Required</p>
                             <p *ngIf="myForm.controls.phone.errors.pattern">phone must be numbers only</p>
                         </div>
@@ -117,7 +108,7 @@
                             <option selected>{{myForm.value.gender}}</option>
                             <option *ngFor="let element of gender" value="{{element}}">{{element}}</option>
                         </select>
-                        <div *ngIf="myForm.controls.gender.errors" class="error text-danger">
+                        <div *ngIf="myForm.controls.gender.errors && myForm.controls.gender.touched" class="error text-danger">
                             <p *ngIf="myForm.controls.gender.errors.required">Gender is Required</p>
                             <p *ngIf="myForm.controls.gender.errors.maxlength">Gender must be characters only</p>
                         </div>
@@ -133,21 +124,14 @@
                             </span>
                         </div>
                         <input type="password" class="form-control"
-                            *ngIf="myForm.controls.password.errors else correctpassword" appValidationError
+                            
                             id="password" placeholder="password" name="password" formControlName="password" required>
-                        <ng-template #correctpassword>
-                            <input type="password" class="form-control" appValidationCorrect id="password"
-                                placeholder="password" name="password" formControlName="password" required>
-                        </ng-template>
-                        <div *ngIf="myForm.controls.password.errors" class="error text-danger">
+
+                        <div *ngIf="myForm.controls.password.errors && myForm.controls.password.touched" class="error text-danger">
                             <p *ngIf="myForm.controls.password.errors.required">password is Required</p>
                             <div *ngIf="passwordErr=='show'">
                                 <p [class]="passwordErr">invalid password</p>
                             </div>
-                            <!-- <div *ngIf="!error">
-                                <p>invalid</p>
-                            </div> -->
-                            <!-- <p [innerHtml]="htmlToAdd"></p> -->
                         </div>
                     </div>
                 </div>
@@ -161,13 +145,10 @@
                             </span>
                         </div>
                         <input type="country" class="form-control"
-                            *ngIf="myForm.controls.country.errors else correctcountry" appValidationError id="country"
+                             id="country"
                             placeholder="country" name="country" formControlName="country" required>
-                        <ng-template #correctcountry>
-                            <input type="text" class="form-control" appValidationCorrect id="country"
-                                placeholder="country" name="country" formControlName="country" required>
-                        </ng-template>
-                        <div *ngIf="myForm.controls.country.errors" class="error text-danger">
+                       
+                        <div *ngIf="myForm.controls.country.errors && myForm.controls.country.touched" class="error text-danger">
                             <p *ngIf="myForm.controls.country.errors.required">country is Required</p>
                             <p *ngIf="myForm.controls.country.errors.city">country must be characters only</p>
                         </div>
@@ -182,13 +163,9 @@
                                 <i class="fas fa-city"></i>
                             </span>
                         </div>
-                        <input type="city" class="form-control" *ngIf="myForm.controls.city.errors else correctcity"
-                            appValidationError id="city" placeholder="city" name="city" formControlName="city" required>
-                        <ng-template #correctcity>
-                            <input type="text" class="form-control" appValidationCorrect id="city" placeholder="city"
-                                name="city" formControlName="city" required>
-                        </ng-template>
-                        <div *ngIf="myForm.controls.city.errors" class="error text-danger">
+                        <input type="city" class="form-control" 
+                         id="city" placeholder="city" name="city" formControlName="city" required>
+                        <div *ngIf="myForm.controls.city.errors && myForm.controls.city.touched" class="error text-danger">
                             <p *ngIf="myForm.controls.city.errors.required">country is Required</p>
                             <p *ngIf="myForm.controls.city.errors.pattern">city must be characters only</p>
                         </div>
@@ -203,21 +180,19 @@
                                 <i class="fas fa-city"></i>
                             </span>
                         </div>
-                        <input type="text" class="form-control" *ngIf="myForm.controls.street.errors else correctstreet"
-                            appValidationError id="street" placeholder="street" name="street" formControlName="street"
+                        <input type="text" class="form-control" 
+                             id="street" placeholder="street" name="street" formControlName="street"
                             required>
-                        <ng-template #correctstreet>
-                            <input type="text" class="form-control" appValidationCorrect id="street"
-                                placeholder="street" name="street" formControlName="street" required>
-                        </ng-template>
-                        <div *ngIf="myForm.controls.street.errors" class="error text-danger">
+                        <div *ngIf="myForm.controls.street.errors && myForm.controls.street.touched" class="error text-danger">
                             <p *ngIf="myForm.controls.street.errors.required">street is Required</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <button class="btn rounded-0" id="editProfileBtn" type="submit" (click)="saveChanges()"><i
+            <button class="btn rounded-0" id="editProfileBtn" type="submit" 
+            [disabled] = "myForm.invalid"
+            (click)="saveChanges()"><i
                     class="fas fa-save"></i> Save
                 Changes</button>
             <button class="btn rounded-0" id="deleteProfileBtn" type="submit" (click)="deleteAccount()"><i
@@ -228,7 +203,8 @@
             <mat-spinner class="loading"></mat-spinner>
         </div>
         <div *ngIf="!isFetching && isError">
-            <div class="text-danger alert-danger error"><i class="fas fa-exclamation-triangle text-danger"></i> Something Went Wrong</div>
+            <div class="text-danger alert-danger error"><i class="fas fa-exclamation-triangle text-danger"></i>
+                Something Went Wrong</div>
         </div>
     </div>
 </div>
