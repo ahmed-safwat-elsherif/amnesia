@@ -39,6 +39,7 @@ import { from } from 'rxjs';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'confirmRegister', component: ConfirmRegisterComponent },
+  {path:'failed', component:ErrorComponent},
   {
    path: 'profile', canActivate: [AuthGuard], component: ProfileComponent,
   },
@@ -65,7 +66,7 @@ const routes: Routes = [
   {path: 'confirmEmail', component:ConfirmEmailComponent},
   {path: 'pwChangedSucc', component:PwChangedSuccessfullyComponent},
   {path:'a',component:AppComponent},
-  {path:'**',component:ErrorComponent},
+  {path:'**',redirectTo:'failed'},
 
 ]
 
