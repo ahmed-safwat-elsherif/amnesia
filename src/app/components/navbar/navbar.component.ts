@@ -57,7 +57,7 @@ export class NavbarComponent implements OnInit {
   /*active*/
   active(e) {
     // console.log(e.target);
-    let links = document.getElementsByClassName('nav-link');
+    let links = document.getElementsByClassName('nav-link') || [];
     for (let i = 0; i < links.length; i++) {
       links[i].classList.remove('active');
     }
@@ -93,7 +93,10 @@ export class NavbarComponent implements OnInit {
 
     this._userService.getProfile().subscribe(
       (response:any)=>{
-        this.heartCount=response.user.favoriteProducts.length??0;  
+        this.heartCount=response.user?.favoriteProducts?.length??0;  
+      }, 
+      err=>{
+        console.log(err)
       }
     )
     void 
