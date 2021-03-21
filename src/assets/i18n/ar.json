@@ -34,9 +34,10 @@
 	},
 	"contact": {
 		"emailAd": "اكتب اميلك",
-		"message": "ارسل رسالتك",
+		"message": "اكتب رسالتك",
+		"name": "اكتب اسمك",
 		"phone": "رقم الهاتف",
-		"subject": "اكتب موضوعك"
+		"subject": "موضوع الرسالة"
 	},
 	"contactus": {
 		"emailInV": "الاميل غير صحيح",
@@ -61,6 +62,9 @@
 		"shopnow3": "هيبوالرجينيك ، تحسب للشمس ، ملائمة للبيئة ، مناسبة.",
 		"shopnow4": "إنها حقيقة مثبتة منذ زمن طويل وهي أن مشتت الانتباه.",
 		"testiOfClients": "شهادات من عملائنا"
+	},
+	"menu": {
+		"title": "القائمة"
 	},
 	"navbar": {
 		"about": "من نحن",
@@ -90,6 +94,9 @@
 		"noOfReviews": "{{reviews}} عدد التقيمات",
 		"prodRating": "{{rating}} / 5  تقييم المنتج",
 		"yourRating": "{{uRating}}/5 ضع تقييما"
+	},
+	"product": {
+		"MoreDetails": "تفاصيل اكثر"
 	},
 	"welcome": {
 		"slogan": "لدينا كل افضل منتجات"

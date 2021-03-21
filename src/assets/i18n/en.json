@@ -34,8 +34,9 @@
 	},
 	"contact": {
 		"emailAd": "Enter your email",
-		"message": "Write Your Message",
-		"phone": "Enter your phone number",
+		"message": "Enter your message",
+		"name": "Enter your name",
+		"phone": "Enter your phone",
 		"subject": "Enter the subject"
 	},
 	"contactus": {
@@ -61,6 +62,9 @@
 		"shopnow3": "hypoallergenic, sun-assurance figured, eco-accommodating, fit.",
 		"shopnow4": "It is a long established fact that a distracted.",
 		"testiOfClients": "Testimonials of Our Clients"
+	},
+	"menu": {
+		"title": "Menu"
 	},
 	"navbar": {
 		"about": "About us",
@@ -90,6 +94,9 @@
 		"noOfReviews": "{{reviews}} Reviews",
 		"prodRating": "Product rating {{rating}} / 5",
 		"yourRating": "Your rating {{uRating}} / 5"
+	},
+	"product": {
+		"MoreDetails": "More Details"
 	},
 	"welcome": {
 		"slogan": "We have the best products"

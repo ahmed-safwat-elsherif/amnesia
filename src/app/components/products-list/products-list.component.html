@@ -43,10 +43,12 @@
                <app-product-card [objectOfInputs]="obj[i]" [favorites]="allFavorites" class="col-md-4 col-sm-6 col-xm-12"
                   *ngFor="let ob of obj; index as i;"></app-product-card>
             </div>
-            <div class="container row m-auto cards" *ngIf="obj.length==0">
+            <div class="container row m-auto cards" *ngIf="obj.length==0 && pname.length != 0">
                <h2 class="text-center mt-2 ">{{'prodList.noSearchIsMatch' | translate}} '{{pname}}' {{'prodList.found' | translate}}</h2>
             </div>
-            
+            <div class="container text-center" *ngIf="obj.length==0 && pname.length == 0">
+               <h2 class=""> Empty </h2>
+            </div>
          </div>
          <div class="col-12 text-center p-5" *ngIf="loading">
             <div class="spinner-border text-primary" role="status">
