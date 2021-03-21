@@ -49,7 +49,7 @@ export class UsersService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': tokencrpw
+        'Authorization': tokencrpw || ""
       })
     };
     return this.myClient.post(`${this.baseURL}/users/reset/password`, userpwJson, httpOptions);
