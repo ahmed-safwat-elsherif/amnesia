@@ -17,7 +17,7 @@ export class UsersService {
   tokenpw
 
   /* local storage*/
-  token = localStorage.getItem('token') || 'no token'
+  token = localStorage.getItem('token') || "";
 
   /* url */
   private baseURL: string = "https://amnesia-skincare.herokuapp.com/api"
