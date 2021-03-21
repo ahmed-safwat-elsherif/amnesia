@@ -2,19 +2,19 @@
     <div class="container">
         <div class="row info">
             <div class="col-md-4">
-                <h5>Beauty</h5>
-                <p>Find the best skincare products for all skin types with best quality.</p>
+                <h5>{{'beauty.beauty' | translate}}</h5>
+                <p>{{'beauty.desc' | translate}}</p>
             </div>
             <div class="col-md-4">
                 <h5>Menu</h5>
-                <span class="clickable" (click)="navigateTo('')">Home</span>
-                <span class="clickable" (click)="navigateTo('about')">About</span>
-                <span class="clickable" (click)="navigateTo('productList')">Products</span>
-                <span class="clickable" (click)="navigateTo('contactUs')">Contact us</span>
+                <span class="clickable" (click)="navigateTo('')">{{'navbar.home' | translate}}</span>
+                <span class="clickable" (click)="navigateTo('about')">{{'navbar.about' | translate}}</span>
+                <span class="clickable" (click)="navigateTo('productList')">{{'navbar.products' | translate}}</span>
+                <span class="clickable" (click)="navigateTo('contactUs')">{{'navbar.contactus' | translate}}</span>
                 <!-- <span (click)="">Language</span> -->
             </div>
             <div class="col-md-4">
-                <h5>Store information</h5>
+                <h5>{{'footer.storeInfo' | translate}}</h5>
                 <span><i class="fas fa-map-marker-alt"></i> Cairo, Egypt</span>
                 <span><i class="fas fa-phone"></i> +02123456</span>
                 <span><i class="fas fa-envelope"></i><a href = "mailto:amnesia.ecommerce@gmail.com"> amnesia.ecommerce@gmail.com</a>

@@ -15,27 +15,26 @@
       <div class="list">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link active" [routerLink]="['/']" routerLinkActive="active" (click)="active($event)">Home</a>
+            <a class="nav-link active" [routerLink]="['/']" routerLinkActive="active" (click)="active($event)">{{'navbar.home' | translate}}</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#aboutUs" (click)="active($event)">About</a>
+            <a class="nav-link" href="#aboutUs" (click)="active($event)">{{'navbar.about' | translate}}</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" routerLink="/products" [routerLink]="['/productList']"
-              (click)="active($event)">Products</a>
+              (click)="active($event)">{{'navbar.products' | translate}}</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/contactUs" routerLinkActive="active" (click)="active($event)"> Contact
-              Us</a>
+            <a class="nav-link" routerLink="/contactUs" routerLinkActive="active" (click)="active($event)">{{'navbar.contactus' | translate}}</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Language
+              {{'navbar.language' | translate}}
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="#">English</a>
-              <a class="dropdown-item" href="#">Arabic</a>
+              <a class="dropdown-item" (click)="useLanguage('en')">English</a>
+              <a class="dropdown-item" (click)="useLanguage('ar')">عربي</a>
             </div>
           </li>
         </ul>
@@ -68,16 +67,16 @@
             <a class="nav-link"><i class="fas fa-search "></i></a> -->
           </li>
           <button *ngIf="!_authService.loggedIn()" routerLink="/login" routerLinkActive="active" class="btn rounded-0"
-            id="loginBtn" type="submit"><i class="fas fa-user"></i> Login</button>
+            id="loginBtn" type="submit"><i class="fas fa-user"></i> {{'navbar.login' | translate}}</button>
           <button *ngIf="!_authService.loggedIn()" routerLink="/register" routerLinkActive="active"
-            class="btn rounded-0" id="registerBtn" type="submit"><i class="fas fa-user-edit"></i> Register</button>
+            class="btn rounded-0" id="registerBtn" type="submit"><i class="fas fa-user-edit"></i> {{'navbar.register' | translate}}</button>
           <!-- <button style="cursor:pointer" *ngIf="_authService.loggedIn()" (click)="_authService.logoutUser()"
             class="btn rounded-0" id="logoutBtn" type="submit">Logout</button> -->
             <div class="nav-item dropdown"style="cursor:pointer" *ngIf="_authService.loggedIn()">
               <a href="#" data-toggle="dropdown" class="nav-item nav-link dropdown-toggle user-action"><img [src]="profImage" class="avatar" alt="Avatar"> {{user.firstname+' '+user.lastname}} <b class="caret"></b></a>
               <div class="dropdown-menu">
-                <a href="#" class="dropdown-item" routerLink="/profile"><i class="fa fa-user-o"></i> Profile</a>
-                <a href="#" class="dropdown-item"style="cursor:pointer" *ngIf="_authService.loggedIn()" (click)="_authService.logoutUser()">Logout</a>
+                <a href="#" class="dropdown-item" routerLink="/profile"><i class="fa fa-user-o"></i> {{'navbar.profile' | translate}}</a>
+                <a href="#" class="dropdown-item"style="cursor:pointer" *ngIf="_authService.loggedIn()" (click)="_authService.logoutUser()">{{'navbar.logout' | translate}}</a>
               </div>
             </div>
         </ul>
@@ -87,12 +86,3 @@
     </div>
   </nav>
 </section>
-
-<!-- <section id="search-product">
- 
-  <div class="container row m-auto cards">
-    <app-product-card [objectOfInputs]="obj[i]" class="col-md-4 col-sm-6 col-xm-12"
-       *ngFor="let ob of obj; index as i;"></app-product-card>
- </div>
-    
-</section> -->

@@ -12,12 +12,12 @@
             </div>
             <div class="col-md-6 col-sm-12 product-details">
                 <div class="row">
-                    <h2 class="col-12 left-border">Description: </h2>
+                    <h2 class="col-12 left-border">{{'prodView.description' | translate}}</h2>
                     <div>{{product.description}}</div>
                 </div>
                 <hr>
                 <div class="row">
-                    <h2 class="col-12">Product rating: {{product.rating}}/5</h2>
+                    <h2 class="col-12">{{'prodView.prodRating' | translate:{'rating':product.rating} }}</h2>
                     <div class="text-left my-2">
                         <fa-icon [icon]="faStar" size="lg" [styles]="{'color': star[0]}"></fa-icon>
                         <fa-icon [icon]="faStar" size="lg" [styles]="{'color': star[1]}"></fa-icon>
@@ -25,7 +25,7 @@
                         <fa-icon [icon]="faStar" size="lg" [styles]="{'color': star[3]}"></fa-icon>
                         <fa-icon [icon]="faStar" size="lg" [styles]="{'color': star[4]}"></fa-icon>
                     </div>
-                    <span class="d-inline-block ml-2 mt-2">{{product.reviews.length}} reviews</span>
+                    <span class="d-inline-block ml-2 mt-2">{{'prodView.noOfReviews' | translate:{'reviews': product.reviews.length} }}</span>
                     <div class="col-12">
                         <p class="card-text font-weight-bold text-left mt-3">
                             <span class="current-price mr-3 d-inline-block">${{product.current_price}}</span>
@@ -36,7 +36,7 @@
                 <hr>
                 <div class="row mt-3">
 
-                    <h2 class="left-border">Your rating is: {{rate}} / 5</h2>
+                    <h2 class="left-border">{{ 'prodView.yourRating' | translate: {'uRating' :rate} }}</h2>
                     <mat-star-rating class="col-12" [color]="'yellow'" [starCount]="5" [rating]="rate"
                         (ratingUpdated)="postRating($event)"></mat-star-rating>
                     <div class="col-12 mt-3 d-flex justify-content-center">

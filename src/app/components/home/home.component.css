@@ -361,3 +361,29 @@ h2::after {
   z-index: 1;
   transform: rotate(-25deg);
 }
+
+
+#product{
+  z-index: auto;
+  height: 500px !important;
+  margin: 0px;
+}
+#product .carousel-cell img{
+  /* object-fit: inherit; */
+  position: relative;
+  width: 200px !important;
+  height: 200px !important;
+}
+#product .carousel-cell .proImg{
+  width: 200px !important;
+  height: 200px !important;
+}
+#product .carousel-cell img.sale{
+  width: 150px !important;
+  margin: 0px;
+  padding: 0px;
+  height: 90px !important;
+  position: relative;
+  bottom: -88px;
+  z-index: 1;
+}

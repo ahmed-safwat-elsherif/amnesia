@@ -3,10 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms'
 import { ReactiveFormsModule } from "@angular/forms"
 import { UsersService } from './services/users.service'
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {GMapModule} from 'primeng/gmap'
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import {IvyCarouselModule} from 'angular-responsive-carousel';
 
 
 
@@ -38,6 +39,8 @@ import { ProductsListComponent } from './components/products-list/products-list.
 import { OrderCompletedComponent } from './components/order-completed/order-completed.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import{ContactUsService} from './services/contactus.service'
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core'
+import {TranslateHttpLoader} from '@ngx-translate/http-loader'
 // import{DefaultLayoutComponent} from './components/containers/default-layout/default-layout.component'
 
 
@@ -139,6 +142,15 @@ const materialUi = [
     FontAwesomeModule,
     GMapModule,
     CarouselModule ,
+    IvyCarouselModule,
+    TranslateModule.forRoot({
+      loader:{
+        provide:TranslateLoader,
+        useFactory:HttpLoaderFactory,
+        deps:[HttpClient]
+      }
+    }),
+
     ...materialUi
   ],
   providers: [
@@ -155,3 +167,7 @@ const materialUi = [
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+export function HttpLoaderFactory(http:HttpClient){
+  return new TranslateHttpLoader(http);
+}

@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-xs-12 col-md-6">
                     <form [formGroup]="myForm" id="formBuy">
-                        <h2>Order Details</h2>
+                        <h2>{{'cartBuy.orderDetails' | translate}}</h2>
                         <!-- firstname -->
                         <div class="form-group">
                             <input type="text" class="form-control"
@@ -12,11 +12,10 @@
                                 id="firstname" placeholder="First name" name="firstname" formControlName="firstname"
                                 required>
                             <div *ngIf="myForm.controls.firstname.errors && myForm.controls.firstname.touched" class="error text-danger">
-                                <p *ngIf="myForm.controls.firstname.errors.required">Name is Required</p>
-                                <p *ngIf="myForm.controls.firstname.errors.maxlength">Name must be less than 8
-                                    characters
+                                <p *ngIf="myForm.controls.firstname.errors.required">{{'cartBuy.NameisRequired' | translate}}</p>
+                                <p *ngIf="myForm.controls.firstname.errors.maxlength">{{'cart.FNamemustbelessthanEightcharacters' | translate}}
                                 </p>
-                                <p *ngIf="myForm.controls.firstname.errors.pattern">Name must be characters only</p>
+                                <p *ngIf="myForm.controls.firstname.errors.pattern">{{'cart.Namemustbecharactersonly' | translate}}</p>
                             </div>
                         </div>
                         <!-- lastname -->
@@ -26,10 +25,10 @@
                                 placeholder="Last name" name="lastname" formControlName="lastname" required>
                             
                             <div *ngIf="myForm.controls.lastname.errors && myForm.controls.lastname.touched" class="error text-danger">
-                                <p *ngIf="myForm.controls.lastname.errors.required">Name is Required</p>
-                                <p *ngIf="myForm.controls.lastname.errors.maxlength">Name must be less than 8 characters
+                                <p *ngIf="myForm.controls.lastname.errors.required">{{'cartBuy.LNameisRequired' | translate}}</p>
+                                <p *ngIf="myForm.controls.lastname.errors.maxlength">{{'cart.LNamemustbelessthanEightcharacters' | translate}}
                                 </p>
-                                <p *ngIf="myForm.controls.lastname.errors.pattern">Name must be characters only</p>
+                                <p *ngIf="myForm.controls.lastname.errors.pattern">{{'cart.Namemustbecharactersonly' | translate}}</p>
                             </div>
                         </div>
                         <!-- phone -->
@@ -39,9 +38,9 @@
                                 placeholder="phone" name="phone" formControlName="phone" required>
                             
                             <div *ngIf="myForm.controls.phone.errors && myForm.controls.phone.touched" class="error text-danger">
-                                <p *ngIf="myForm.controls.phone.errors.required">phone is Required</p>
+                                <p *ngIf="myForm.controls.phone.errors.required">{{'cartBuy.phoneisRequired' | translate}}</p>
                                 <!-- <p *ngIf="myForm.controls.phone.errors.pattern">phone must be 11 number</p> -->
-                                <p *ngIf="myForm.controls.phone.errors.pattern">phone must be numbers only</p>
+                                <p *ngIf="myForm.controls.phone.errors.pattern">{{'cartBuy.phonemustbenumbersonly' | translate}}</p>
                             </div>
                         </div>
                         <!-- country -->
@@ -50,8 +49,8 @@
                                 id="country" placeholder="country" name="country" formControlName="country" required>
                            
                             <div *ngIf="myForm.controls.country.errors && myForm.controls.country.touched" class="error text-danger">
-                                <p *ngIf="myForm.controls.country.errors.required">country is Required</p>
-                                <p *ngIf="myForm.controls.country.errors.city">country must be characters only</p>
+                                <p *ngIf="myForm.controls.country.errors.required">{{'cartBuy.countryisRequired' | translate}}</p>
+                                <p *ngIf="myForm.controls.country.errors.city">{{'cartBuy.countrymustbecharactersonly' | translate}}</p>
                             </div>
                         </div>
                         <!-- city -->
@@ -117,11 +116,11 @@
                             </button>
                         </div>
                         <!-- buy btn -->
-                        <button type="submit" class="btn rounded-0" [disabled]="myForm.invalid" id="buy" (click)="buy()">Buy Now</button>
+                        <button type="submit" class="btn rounded-0" [disabled]="myForm.invalid" id="buy" (click)="buy()">{{'cartBuy.BuyNow' | translate}}</button>
                     </form>
                     <div id='orderSuccess'>
-                        <h2><i class="far fa-check-circle"></i>  Order Sent Successfully</h2>
-                        <button type="submit" class="btn rounded-0 returnHome" id="buy"  [routerLink]="['/']">Go Home</button>
+                        <h2><i class="far fa-check-circle"></i>{{'cartBuy.OrderSentSuccessfully' | translate}}</h2>
+                        <button type="submit" class="btn rounded-0 returnHome" id="buy"  [routerLink]="['/']">{{'cartBuy.GoHome' | translate}}</button>
                     </div>
                 </div>
             </div>

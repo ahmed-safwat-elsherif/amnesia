@@ -58,29 +58,52 @@ export class HomeComponent implements OnInit {
   }
 
   /*getAllProducts*/
-  productImage=[]
+  isFetching=true
+  productImage = []
   products: any = []
   getAllProducts() {
+    this.isFetching = true
     this.productService.getProducts().subscribe(
       (products: any) => {
-        let allProducts;
+        this.isFetching = false
+        let allProducts
         // console.log(Object.values(products)[0])
         // console.log(Object.values(products)[0][0].status)
         allProducts = Object.values(products)[0]
         for (let i = 0; i < allProducts.length; i++) {
           if (Object.values(products)[0][i].status == "Sale") {
             this.products.push(allProducts[i]);
-            let image = (allProducts[i]?.image)? 
-              `https://amnesia-skincare.herokuapp.com/api/images/show/${allProducts[i]?.image}`: 
-              "http://nwsid.net/wp-content/uploads/2015/05/dummy-profile-pic.png"
-            this.productImage.push(image);
+            // this.productImage.push(`https://amnesia-skincare.herokuapp.com/api/images/show/${this.products[i].image}` || "http://nwsid.net/wp-content/uploads/2015/05/dummy-profile-pic.png")
           }
         }
-        // console.log(this.products)
+        console.log(this.products)
       },
-      err => console.log(err)
+      err => {
+        this.isFetching = true
+        console.log(err)
+      }
     )
   }
+  // productImage=[]
+  // products: any = []
+  // getAllProducts() {
+  //   this.productService.getProducts().subscribe(
+  //     (products: any) => {
+  //       let allProducts;
+  //       allProducts = Object.values(products)[0]
+  //       for (let i = 0; i < allProducts.length; i++) {
+  //         if (Object.values(products)[0][i].status == "Sale") {
+  //           this.products.push(allProducts[i]);
+  //           let image = (allProducts[i]?.image)? 
+  //             `https://amnesia-skincare.herokuapp.com/api/images/show/${allProducts[i]?.image}`: 
+  //             "http://nwsid.net/wp-content/uploads/2015/05/dummy-profile-pic.png"
+  //           this.productImage.push(image);
+  //         }
+  //       }
+  //     },
+  //     err => console.log(err)
+  //   )
+  // }
 
   /* product details by id */
   productDetails(_id){

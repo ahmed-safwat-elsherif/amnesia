@@ -3,13 +3,13 @@
       <div class="row">
          <div class="col-md-12 col-sm-12" >
             <ul class="list-group row rounded-0">
-               <li class="list-group-item text-center" style="color:#F65B5F ">Showing Products
-                  {{skipGlobal+1}}-{{skipGlobal+obj?.length}} Of {{noOfProducts}} Result</li>
+               <li class="list-group-item text-center" style="color:#F65B5F ">{{'prodList.showingProducts' | translate}}
+                  {{skipGlobal+1}}-{{skipGlobal+obj?.length}} {{'prodList.of' | translate}} {{noOfProducts}} {{'prodList.results' | translate}}</li>
             </ul>
             <ul class="list-group row list-group-horizontal rounded-0">
                <li class="list-group-item col-4  rounded-0">
                   <ul class="list-group row rounded-0">
-                     <li class="list-group-item text-center border-0" style="color:#F65B5F ">Price range</li>
+                     <li class="list-group-item text-center border-0" style="color:#F65B5F ">{{'prodList.priceRange' | translate}}</li>
                   </ul>
                   <ul class="list-group list-group-horizontal row  rounded-0">
                      <li class="list-group-item col-6 p-0 pl-1 border-0 text-left" style="color:rgb(219, 78, 83) ">$0
@@ -34,7 +34,7 @@
 
                </li>
                <li class="list-group-item col-4 rounded-0">
-                  <h5 style="color:#F65B5F ">Products of sales</h5>
+                  <h5 style="color:#F65B5F ">{{'prodList.prodOfSales' | translate}}</h5>
                   <input type="checkbox" [(ngModel)]="isChecked" (change)="changeSale()"
                      style="margin-left: 50%;margin-top: 7%;border-radius: 50%" />
                </li>
@@ -44,7 +44,7 @@
                   *ngFor="let ob of obj; index as i;"></app-product-card>
             </div>
             <div class="container row m-auto cards" *ngIf="obj.length==0">
-               <h2 class="text-center mt-2 ">no searches is matching '{{pname}}' found</h2>
+               <h2 class="text-center mt-2 ">{{'prodList.noSearchIsMatch' | translate}} '{{pname}}' {{'prodList.found' | translate}}</h2>
             </div>
             
          </div>

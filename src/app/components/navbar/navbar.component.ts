@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 // import { ProductService } from './../../services/product.service';
 // import { Input } from '@material-ui/core';
 import { from } from 'rxjs';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   providers:[LoginComponent],
@@ -21,9 +22,14 @@ export class NavbarComponent implements OnInit {
     private product: ProductsService,
     private _userService: UsersService,
     public logib: LoginComponent,
-    // public productService: ProductService,
-  ) {}
-
+    private translate: TranslateService
+  ) {
+    translate.addLangs(['en','ar'])
+    translate.setDefaultLang('en')
+  }
+  useLanguage(language:string){
+    this.translate.use(language);
+  }
   /*var*/
   isOpen: boolean = false;
   heartCount: number = 0;

@@ -8,7 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "heroku-postbuild": "ng build --prod"
+    "heroku-postbuild": "ng build --prod",
+    "extract-translations": "ngx-translate-extract --input ./src --output ./src/assets/i18n/ar.json ./src/assets/i18n/en.json --clean --sort --format namespaced-json --marker _"
   },
   "private": true,
   "dependencies": {
@@ -30,7 +31,10 @@
     "@fortawesome/free-regular-svg-icons": "^5.15.2",
     "@fortawesome/free-solid-svg-icons": "^5.15.2",
     "@material-ui/core": "^4.11.3",
+    "@ngx-translate/core": "^13.0.0",
+    "@ngx-translate/http-loader": "^6.0.0",
     "angular-font-awesome": "^3.1.2",
+    "angular-responsive-carousel": "^2.0.2",
     "bootstrap": "^4.6.0",
     "express": "^4.17.1",
     "font-awesome": "^4.7.0",
@@ -46,6 +50,9 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1101.4",
+    "@angular/cli": "~11.1.4",
+    "@angular/compiler-cli": "~11.1.2",
+    "@biesbjerg/ngx-translate-extract": "^7.0.3",
     "@types/jasmine": "~3.6.0",
     "@types/node": "^12.11.1",
     "codelyzer": "^6.0.0",
@@ -59,8 +66,6 @@
     "protractor": "~7.0.0",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
-    "@angular/cli": "~11.1.4",
-    "@angular/compiler-cli": "~11.1.2",
     "typescript": "~4.1.2"
   },
   "engines": {

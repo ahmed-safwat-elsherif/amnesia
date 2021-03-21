@@ -2,26 +2,47 @@
   <div class="container-fluid mb-4">
     <div class="row">
       <div class="col-md-6 header">
-        <p class="pb-2">We Have the best Makeup</p>
+        <p class="pb-2">{{'welcome.slogan' | translate}}</p>
         <h3 class="webapp-title">Amnesia</h3>
-        <button (click)="shopnow()" type="button" class="btn btn-primary rounded-0">Shop Now</button>
+        <button (click)="shopnow()" type="button" class="btn btn-primary rounded-0">{{'home.shopnow' | translate}}</button>
       </div>
     </div>
   </div>
 </section>
 
+
+
 <!-- product sale -->
 <section id="feature-product">
   <div class="container">
-    <div class="row w-75">
+    <div class="row">
       <div class="col-md-12">
-        <h2>Products <b>Sales</b></h2>
+        <h2>{{'home.products' | translate}} <b>{{'home.sales' | translate}}</b></h2>
         <!-- <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="0"> -->
           <!-- Wrapper for carousel items -->
           <!-- <div class="carousel-inner">
             <div class="carousel-item active"> -->
               <div class="row">
-                  <ng-container *ngFor="let product of products; index as i;">
+                <carousel autoplay="true" pauseOnHover="true" *ngIf="!isFetching" id="product">
+                  <div *ngFor="let product of products; index as i;" class="carousel-cell">
+                    <!-- <div class="classOfStatus">Sale</div> -->
+                    <img class="sale" src="../../../assets/images/Sale2.png" alt="">
+                    <div class="thumb-wrapper active">
+                      <div class="img-box">
+                        <img class="proImg" src="https://amnesia-skincare.herokuapp.com/api/images/show/{{product.image}}" alt="productImg">
+                      </div>
+                      <div class="thumb-content">
+                        <h4>{{product.name}}</h4>
+                        <p class="item-price">
+                          <span class="oldPrice">${{product.old_price}}</span>
+                          <span class="newPrice">${{product.current_price}}</span>
+                        </p>
+                        <a class="btn rounded-0" (click)="productDetails(product._id)">More Details</a>
+                      </div>
+                    </div>
+                  </div>
+                </carousel>
+                  <!-- <ng-container *ngFor="let product of products; index as i;">
                     <div class="classOfStatus">Sale</div>
                     <div class="thumb-wrapper active">
                       <div class="img-box">
@@ -36,15 +57,8 @@
                         <a class="btn rounded-0" (click)="productDetails(product._id)">More Details</a>
                       </div>
                     </div>
-                  </ng-container>
+                  </ng-container> -->
               </div>
-              <div>Some tags before</div>
-              <owl-carousel-o [options]="customOptions">
-                <ng-template carouselSlide>Slide 1</ng-template>  
-                <ng-template carouselSlide>Slide 2</ng-template>  
-                <ng-template carouselSlide>Slide 3</ng-template>  
-              </owl-carousel-o>
-              <div>Some tags after</div>
             <!-- </div> -->
           <!-- </div> -->
           <!-- Carousel controls -->
@@ -74,16 +88,12 @@
         <div class="col-lg-6 im">
         </div>
         <div class="col-lg-6">
-          <p>‘Amnesia’ Egypt Cosmetics is the result of owners hardwork,
-            big name makeup craftsman and restorative aesthetician.
+          <p>‘Amnesia’ {{'home.aboutusTitle' | translate}} 
           </p>
-          <span><i class="far fa-check-circle"></i>The makeup accumulation includes backstage excellence and
-            regular.</span>
-          <span><i class="far fa-check-circle"></i> just as a wide cluster of strikingly lively shades that
-            are all cold.</span>
-          <span><i class="far fa-check-circle"></i>hypoallergenic, sun-assurance figured, eco-accommodating,
-            fit.</span>
-          <span><i class="far fa-check-circle"></i> It is a long established fact that a distracted.</span>
+          <span><i class="far fa-check-circle"></i>{{'home.aboutus1' | translate}} </span>
+          <span><i class="far fa-check-circle"></i> {{'home.shopnow2' | translate}} </span>
+          <span><i class="far fa-check-circle"></i> {{'home.shopnow3' | translate}} </span>
+          <span><i class="far fa-check-circle"></i> {{'home.shopnow4' | translate}} </span>
         </div>
       </div>
     </div>
@@ -93,7 +103,7 @@
 
 <!-- our team -->
 <section id="team">
-  <h2>Our Professional Team</h2>
+  <h2>{{'home.ourProfessionalTeam' | translate}}</h2>
   <div class="container">
     <div class="row">
       <div class="col-lg-3">
@@ -158,7 +168,7 @@
 <!-- ourclient -->
 <section id="clients">
   <div class="client">
-    <h2>Testimonials Of Our Clients</h2>
+    <h2>{{'home.testiOfClients' | translate}}</h2>
   </div>
   <div class="container">
     <div class="row">
