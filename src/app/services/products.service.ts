@@ -12,15 +12,12 @@ export class ProductsService {
   addToCart = new Subject();
   deleteProduct= new Subject();
   resetCart = new Subject();
-  // substractFromCart=new Subject();
 
-  constructor(private myClient: HttpClient) {
-    // console.log(myClient);
-    // console.log("ctor")
-  }
+
+  constructor(private myClient: HttpClient) {}
 
   /*local storage*/
-  token = localStorage.getItem('token');
+  token = localStorage.getItem('token') || "";
 
   localStorageToken = (token) => {
     localStorage.setItem('token', token)

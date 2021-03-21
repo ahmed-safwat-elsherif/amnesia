@@ -24,7 +24,7 @@ export class ServiceMainService {
       const httpOptions = {
         headers: new HttpHeaders({
           'Content-Type':  'application/json',
-          Authorization: token
+          Authorization: token || ""
         })
       };
       return this.http.get(`${this.baseURL}/users/profile`,httpOptions)
@@ -45,7 +45,7 @@ export class ServiceMainService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
-        Authorization: token
+        Authorization: token || ""
       })
     };
     return this.http.post(`${this.baseURL}/products/favorites/${id}`,body,httpOptions)
@@ -57,7 +57,7 @@ export class ServiceMainService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
-        Authorization: token
+        Authorization: token || ""
       })
     };
     return this.http.post(`${this.baseURL}/products/rating/${id}`,body,httpOptions);
