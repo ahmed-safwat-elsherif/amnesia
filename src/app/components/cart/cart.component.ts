@@ -30,7 +30,7 @@ export class CartComponent implements OnInit, OnDestroy {
 
 
   /* local storage*/
-  mycart = localStorage.getItem('cart')
+  mycart:any = localStorage.getItem('cart') || [];
   mycartObj = JSON.parse(this.mycart)
 
   /*set orders*/

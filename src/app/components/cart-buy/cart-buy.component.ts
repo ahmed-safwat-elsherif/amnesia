@@ -23,12 +23,12 @@ export class CartBuyComponent implements OnInit, OnDestroy {
   /*services*/
   user
   subscriber
-  mycart = localStorage.getItem('cart')
+  mycart:any = localStorage.getItem('cart') || []
   mycartObj = JSON.parse(this.mycart)
   order = []
 
   //retrieve from local storage
-  localStorageProductsRetrive = localStorage.getItem('cart');
+  localStorageProductsRetrive:any = localStorage.getItem('cart') || [];
 
   /*validation on editing*/
   myForm = new FormGroup({
@@ -44,8 +44,7 @@ export class CartBuyComponent implements OnInit, OnDestroy {
 
   /*save changes*/
   buy() {
-    console.log(this.myForm.controls)
-    console.log(JSON.parse(localStorage.getItem('cart')));
+    
     let token = localStorage.getItem('token') || 'empty token';
     this.myService.getProfile().subscribe(
       (user: any) => {

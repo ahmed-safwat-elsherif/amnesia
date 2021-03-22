@@ -94,7 +94,7 @@ export class ProductCardComponent implements OnInit {
   }
 
   /* add to cart */
-  cartProducts = localStorage.getItem('cart');
+  cartProducts:any = localStorage.getItem('cart') || [];
   addToCart(event, id) {
     if (!this.cartId.includes(id)) {
       this.myService.addToCart.next();
