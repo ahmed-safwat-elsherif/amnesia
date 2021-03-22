@@ -79,14 +79,16 @@ export class CartComponent implements OnInit, OnDestroy {
     this.setProductOnCart()
   }
   goOrder(){
+    console.log("check profile")
     this.userService.getProfile().subscribe(
       (res:any)=>{
+        console.log(res)
         this.router.navigate(['cartBuy']);
-      }
-    ),
-    err=>{
+      },
+    (err)=>{
+      console.log(err)
       this.router.navigate(['login'])
-    }
+    })
   }
   /*onDestroy*/
   ngOnDestroy(): void { }
