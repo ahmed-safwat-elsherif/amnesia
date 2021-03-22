@@ -32,8 +32,8 @@ export class NavbarComponent implements OnInit {
   /*var*/
   isOpen: boolean = false;
   heartCount: number = 0;
-  cartCount: number = JSON.parse(localStorage.getItem('cart'))?.length;
-  count = JSON.parse(localStorage.getItem('cart'))?.length;
+  cartCount: number = JSON.parse(localStorage.getItem('cart'))?.length || 0;
+  count = JSON.parse(localStorage.getItem('cart'))?.length || 0;
   @Input() Data: any;
   subscriber: any;
   user: any = {
