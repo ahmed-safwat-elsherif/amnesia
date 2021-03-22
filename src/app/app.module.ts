@@ -1,15 +1,17 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms'
-import { ReactiveFormsModule } from "@angular/forms"
-import { UsersService } from './services/users.service'
-import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { UsersService } from './services/users.service';
+import {
+  HttpClient,
+  HttpClientModule,
+  HTTP_INTERCEPTORS,
+} from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import {GMapModule} from 'primeng/gmap'
+import { GMapModule } from 'primeng/gmap';
 import { CarouselModule } from 'ngx-owl-carousel-o';
-import {IvyCarouselModule} from 'angular-responsive-carousel';
-
-
+import { IvyCarouselModule } from 'angular-responsive-carousel';
 
 import { AppComponent } from './app.component';
 import { ProfileComponent } from './components/profile/profile.component';
@@ -38,11 +40,12 @@ import { ProductCardComponent } from './components/product-card/product-card.com
 import { ProductsListComponent } from './components/products-list/products-list.component';
 import { OrderCompletedComponent } from './components/order-completed/order-completed.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
-import{ContactUsService} from './services/contactus.service'
-import {TranslateLoader, TranslateModule} from '@ngx-translate/core'
-import {TranslateHttpLoader} from '@ngx-translate/http-loader'
-// import{DefaultLayoutComponent} from './components/containers/default-layout/default-layout.component'
+import { ContactUsService } from './services/contactus.service';
+import { ConfirmedRegisterComponent } from './components/confirmed-register/confirmed-register.component';
 
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+// import{DefaultLayoutComponent} from './components/containers/default-layout/default-layout.component'
 
 /* imports materialui */
 import { MatSliderModule } from '@angular/material/slider';
@@ -60,9 +63,9 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
-import {AuthService} from './services/auth.service'
+import { AuthService } from './services/auth.service';
 import { AuthGuard } from './auth.guard';
-import {TokenInterceptorService} from './services/token-interceptor.service'
+import { TokenInterceptorService } from './services/token-interceptor.service';
 import { ConfirmRegisterComponent } from './components/confirm-register/confirm-register.component';
 import { FormValidationDirective } from './directives/form-validation.directive';
 import { FavouriteComponent } from './components/favourite/favourite.component';
@@ -72,8 +75,6 @@ import { ForgetPwComponent } from './components/forget-pw/forget-pw.component';
 import { ConfirmEmailComponent } from './components/confirm-email/confirm-email.component';
 import { PwChangedSuccessfullyComponent } from './components/pw-changed-successfully/pw-changed-successfully.component';
 import { ScrollToTopComponent } from './components/scroll-to-top/scroll-to-top.component';
-
-
 
 const materialUi = [
   MatProgressSpinnerModule,
@@ -86,9 +87,8 @@ const materialUi = [
   MatIconModule,
   MatDialogModule,
   MatSnackBarModule,
-  MatFormFieldModule
-]
-
+  MatFormFieldModule,
+];
 
 @NgModule({
   declarations: [
@@ -127,10 +127,9 @@ const materialUi = [
     ErrorComponent,
     ForgetPwComponent,
     ConfirmEmailComponent,
+    ConfirmedRegisterComponent,
     PwChangedSuccessfullyComponent,
     ScrollToTopComponent,
-     
-    
   ],
   imports: [
     BrowserModule,
@@ -141,17 +140,17 @@ const materialUi = [
     BrowserAnimationsModule,
     FontAwesomeModule,
     GMapModule,
-    CarouselModule ,
+    CarouselModule,
     IvyCarouselModule,
     TranslateModule.forRoot({
-      loader:{
-        provide:TranslateLoader,
-        useFactory:HttpLoaderFactory,
-        deps:[HttpClient]
-      }
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient],
+      },
     }),
 
-    ...materialUi
+    ...materialUi,
   ],
   providers: [
     UsersService,
@@ -161,13 +160,13 @@ const materialUi = [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
-      multi: true
-    }
+      multi: true,
+    },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
 
-export function HttpLoaderFactory(http:HttpClient){
+export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
