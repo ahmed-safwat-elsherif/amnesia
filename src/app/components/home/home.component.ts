@@ -39,7 +39,9 @@ export class HomeComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private router: Router,
-  ) { }
+  ) {
+    localStorage.setItem('cart',JSON.stringify([]));
+   }
 
   
   shopnow() {
