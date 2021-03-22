@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ProductsService } from 'src/app/services/products.service';
 import { shareReplay } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { UsersService } from 'src/app/services/users.service';
 
 
 @Component({
@@ -16,7 +17,8 @@ export class CartComponent implements OnInit, OnDestroy {
     private myService: ProductsService,
     private myActivatedRoute: ActivatedRoute,
     private router: Router,
-    private productsService: ProductsService
+    private productsService: ProductsService,
+    private userService : UsersService
     ) { }
 
   /*var*/
@@ -76,7 +78,16 @@ export class CartComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.setProductOnCart()
   }
-
+  goOrder(){
+    this.userService.getProfile().subscribe(
+      (res:any)=>{
+        this.router.navigate(['cartBuy']);
+      }
+    ),
+    err=>{
+      this.router.navigate(['login'])
+    }
+  }
   /*onDestroy*/
   ngOnDestroy(): void { }
 }

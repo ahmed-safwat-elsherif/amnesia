@@ -43,7 +43,7 @@
                 <h4>{{'cart.CartTotalPrice' | translate}}</h4>
                 <p>$ {{totalPrice}}</p>
                 <!-- <button class="btn rounded-0" id="buyNow" (click)="crmOrder()">Confirm Order</button> -->
-                <button class="btn rounded-0" id="buyNow" [routerLink]="['/cartBuy']" >{{'cart.confirmOrder' | translate}}</button>
+                <button class="btn rounded-0" id="buyNow" (click)="goOrder()" >{{'cart.confirmOrder' | translate}}</button>
             </div>
         </div>
     </div>
