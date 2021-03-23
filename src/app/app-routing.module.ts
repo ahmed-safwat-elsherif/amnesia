@@ -63,7 +63,6 @@ const routes: Routes = [
   {path: 'favouriteEmpty', component:FavouriteEmptyComponent},
   {path: 'contactUs', component: ContactUsComponent},
   {path:'nav', component:NavbarComponent},
-  // {path: 'confirmed',component:ConfirmedComponent},
   {path: 'forgetPassword', component:ForgetPwComponent},
   {path: 'confirmEmail', component:ConfirmEmailComponent},
   {path: 'pwChangedSucc', component:PwChangedSuccessfullyComponent},

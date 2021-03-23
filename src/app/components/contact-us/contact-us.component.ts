@@ -35,8 +35,8 @@ export class ContactUsComponent implements OnInit {
   submitContactForm() {
     this.contactUsService.sendContactUsInfo(this.contactUs).subscribe(
       (response) => {
-        console.log("suceess");
         this.router.navigate(['message/sent']);
+        console.log("suceess");
         console.log("route to sent");
       },
       (error) => {
