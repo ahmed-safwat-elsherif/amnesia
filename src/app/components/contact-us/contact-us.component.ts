@@ -37,9 +37,10 @@ export class ContactUsComponent implements OnInit {
       (response) => {
         console.log("suceess");
         this.router.navigate(['message/sent']);
+        console.log("route to sent");
       },
       (error) => {
-        console.log("error");
+        console.log({error});
       }
     )
   }
