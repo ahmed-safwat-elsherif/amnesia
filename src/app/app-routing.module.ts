@@ -34,6 +34,7 @@ import { ConfirmEmailComponent } from './components/confirm-email/confirm-email.
 import { PwChangedSuccessfullyComponent } from './components/pw-changed-successfully/pw-changed-successfully.component';
 import { from } from 'rxjs';
 import { ConfirmedRegisterComponent } from './components/confirmed-register/confirmed-register.component';
+import { MessageSentComponent } from './components/message-sent/message-sent.component';
 
 
 
@@ -68,6 +69,7 @@ const routes: Routes = [
   {path: 'pwChangedSucc', component:PwChangedSuccessfullyComponent},
   {path:'a',component:AppComponent},
   {path:'confirmedRegister', component:ConfirmedRegisterComponent},
+  {path:'message/sent', component:MessageSentComponent},
   {path:'**',redirectTo:'failed'},
 
 ]

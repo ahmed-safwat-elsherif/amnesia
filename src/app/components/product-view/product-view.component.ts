@@ -101,6 +101,7 @@ export class ProductViewComponent implements OnInit {
     let token = localStorage.getItem('token') || 'empty token';
     this.service.getProfile(token).subscribe(
       (user:any)=>{
+        console.log(rating)
         this.service.postRatingById(token,rating,this.id).subscribe((product: any)=>{
           console.log(product,rating,this.id)
           this.product=product.product;

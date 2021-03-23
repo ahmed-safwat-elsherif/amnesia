@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ContactUs } from 'src/app/_data/models/contactus.model';
 import { ContactUsService } from '../../services/contactus.service';
 
@@ -9,7 +10,10 @@ import { ContactUsService } from '../../services/contactus.service';
 })
 export class ContactUsComponent implements OnInit {
 
-  constructor(private contactUsService: ContactUsService) { }
+  constructor(
+    private contactUsService: ContactUsService,
+    private router: Router
+    ) { }
 
 
  
@@ -32,6 +36,7 @@ export class ContactUsComponent implements OnInit {
     this.contactUsService.sendContactUsInfo(this.contactUs).subscribe(
       (response) => {
         console.log("suceess");
+        this.router.navigate(['message/sent']);
       },
       (error) => {
         console.log("error");

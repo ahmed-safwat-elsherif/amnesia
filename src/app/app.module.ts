@@ -75,6 +75,7 @@ import { ForgetPwComponent } from './components/forget-pw/forget-pw.component';
 import { ConfirmEmailComponent } from './components/confirm-email/confirm-email.component';
 import { PwChangedSuccessfullyComponent } from './components/pw-changed-successfully/pw-changed-successfully.component';
 import { ScrollToTopComponent } from './components/scroll-to-top/scroll-to-top.component';
+import { MessageSentComponent } from './components/message-sent/message-sent.component';
 
 const materialUi = [
   MatProgressSpinnerModule,
@@ -130,6 +131,7 @@ const materialUi = [
     ConfirmedRegisterComponent,
     PwChangedSuccessfullyComponent,
     ScrollToTopComponent,
+    MessageSentComponent,
   ],
   imports: [
     BrowserModule,
