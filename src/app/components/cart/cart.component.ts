@@ -4,8 +4,6 @@ import { ProductsService } from 'src/app/services/products.service';
 import { shareReplay } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { UsersService } from 'src/app/services/users.service';
-
-
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -82,7 +80,6 @@ export class CartComponent implements OnInit, OnDestroy {
     console.log("check profile")
     this.userService.getProfile().subscribe(
       (res:any)=>{
-        console.log(res)
         this.router.navigate(['cartBuy']);
       },
     (err)=>{
